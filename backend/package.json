@@ -1,0 +1,14 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "The back-end powering the eCommerce website.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "THEMUD",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
