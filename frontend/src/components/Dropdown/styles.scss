@@ -1,0 +1,47 @@
+.dropdown {
+    position: relative;
+    cursor: default;
+
+    .text {
+        color: #000;
+    }
+
+    .content {
+        position: absolute;
+        display: none;
+        padding: 10px;
+        background-color: #FFF;
+        box-shadow: 2px 2px 5px #CCC;
+        border-radius: 5px;
+        min-width: 200px;
+        overflow: auto;
+
+        .section:not(:first-child) {
+            margin-top: 15px;
+        }
+
+        .header {
+            color: #000;
+            margin: 0;
+            margin-bottom: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #00000050;
+        }
+
+        .category {
+            display: block;
+            color: #00000099;
+            text-decoration: none;
+
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+
+    &:hover {
+        .content {
+            display: block;
+        }
+    }
+}

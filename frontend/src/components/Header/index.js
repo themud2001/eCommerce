@@ -12,11 +12,7 @@ const Header = () => {
             </div>
 
             <div className="left">
-                <Dropdown
-                    className="item"
-                    href="#"
-                    text="SHOP"
-                />
+                <Dropdown />
                 <a href="#" className="item">ABOUT</a>
                 <a href="#" className="item">CONTACT</a>
             </div>
