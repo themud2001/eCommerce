@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FiChevronDown } from "react-icons/fi";
 
 import "./styles.scss";
@@ -11,23 +12,24 @@ const Dropdown = () => {
             <div className="content">
                 <div className="section">
                     <h5 className="header">MEN</h5>
-                    <a href="#" className="category">T-Shirts</a>
-                    <a href="#" className="category">Shoes</a>
-                    <a href="#" className="category">Pants</a>
+                    <Link to="/men/underwears" className="category">Underwears</Link>
+                    <Link to="/men/shoes" className="category">Shoes</Link>
+                    <Link to="/men/tshirts" className="category">T-Shirts</Link>
+                    <Link to="/men/pants" className="category">Pants</Link>
                 </div>
 
                 <div className="section">
                     <h5 className="header">WOMEN</h5>
-                    <a href="#" className="category">T-Shirts</a>
-                    <a href="#" className="category">Shoes</a>
-                    <a href="#" className="category">Pants</a>
+                    <Link to="/women/dresses" className="category">Dresses</Link>
+                    <Link to="/women/skirts" className="category">Skirts</Link>
+                    <Link to="/women/pants" className="category">Pants</Link>
+                    <Link to="/women/shoes" className="category">Shoes</Link>
                 </div>
 
                 <div className="section">
                     <h5 className="header">KIDS</h5>
-                    <a href="#" className="category">T-Shirts</a>
-                    <a href="#" className="category">Shoes</a>
-                    <a href="#" className="category">Pants</a>
+                    <Link to="/kids/tshirts" className="category">T-Shirts</Link>
+                    <Link to="/kids/shoes" className="category">Shoes</Link>
                 </div>
             </div>
 
