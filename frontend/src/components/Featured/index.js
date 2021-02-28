@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "../Card";
 
 import "./styles.scss";
 
@@ -7,9 +8,7 @@ const Featured = () => {
         <div className="featured">
             <h2>Featured Products</h2>
             <div className="products">
-                <div className="card">
-                    Test
-                </div>
+                <Card />
             </div>
         </div>
     );
