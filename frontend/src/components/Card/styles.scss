@@ -1,0 +1,27 @@
+.card {
+    height: 425px;
+    width: 250px;
+    background-color: #FFF;
+    box-shadow: 3px 3px 10px #c4c4c4;
+    margin: 0 auto;
+
+    .price {
+        display: block;
+        text-align: center;
+        margin: 20px;
+    }
+
+    .add-to-cart-button {
+        cursor: pointer;
+        border: 2px solid #000;
+        background-color: #FFF;
+        border-radius: 0px;
+        padding: 10px;
+        box-shadow: 1px 1px 10px #CCC;
+
+        &:hover {
+            background-color: #000;
+            color: #FFF;
+        }
+    }
+}

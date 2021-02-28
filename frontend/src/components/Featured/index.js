@@ -9,6 +9,9 @@ const Featured = () => {
             <h2>Featured Products</h2>
             <div className="products">
                 <Card />
+                <Card />
+                <Card />
+                <Card />
             </div>
         </div>
     );
