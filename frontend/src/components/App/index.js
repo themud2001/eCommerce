@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header from "../Header";
 import Landing from "../Landing";
 import Featured from "../Featured";
+import Footer from "../Footer";
 import "./styles.scss";
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
                     <Header />
                     <Route path="/" exact component={Landing} />
                     <Route path="/" exact component={Featured} />
+                    <Footer />
                 </BrowserRouter>
             </div>
         );

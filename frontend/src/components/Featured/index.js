@@ -8,11 +8,11 @@ const products = [
     { title: "Skirt", price: 14.99 },
     { title: "Hoody", price: 36.99 },
     { title: "Pants", price: 9.99 }
-]
+];
 
 const Featured = () => {
     const renderedList = products.map(item => (
-        <Card title={item.title} price={item.price} />
+        <Card key={item.title} title={item.title} price={item.price} />
     ));
 
     return (
