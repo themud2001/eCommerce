@@ -2,7 +2,7 @@ import React from "react";
 
 import "./styles.scss";
 
-const Card = () => {
+const Card = ({ title, price }) => {
     return (
         <div className="card">
             <div className="image">
@@ -10,8 +10,8 @@ const Card = () => {
             </div>
 
             <div className="content">
-                <h3 className="title">T-Shirt</h3>
-                <span className="price">9.99$</span>
+                <h3 className="title">{title}</h3>
+                <span className="price">{price}$</span>
                 <button className="add-to-cart-button">ADD TO CART</button>
             </div>
         </div>
