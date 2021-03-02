@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
 
 export default combineReducers({
-    test: 12
+    test: () => 10
 });
