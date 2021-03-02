@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiShoppingCart, FiUser } from "react-icons/fi";
+import { FiUser } from "react-icons/fi";
 
 import Dropdown from "../Dropdown/";
+import Cart from "../Cart";
 import "./styles.scss";
 
 const Header = () => {
@@ -19,7 +20,7 @@ const Header = () => {
             </div>
 
             <div className="right">
-                <a href="#" className="item cart"><FiShoppingCart size={22} /></a>
+                <Cart />
                 <Link to="/user" className="item user"><FiUser size={22} /></Link>
             </div>
         </div>
