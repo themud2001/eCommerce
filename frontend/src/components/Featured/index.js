@@ -4,15 +4,20 @@ import Card from "../Card";
 import "./styles.scss";
 
 const products = [
-    { title: "T-Shirt", price: 4.99 },
-    { title: "Skirt", price: 14.99 },
-    { title: "Hoody", price: 36.99 },
-    { title: "Pants", price: 9.99 }
+    { id: 1, title: "T-Shirt", price: 4.99 },
+    { id: 2, title: "Skirt", price: 14.99 },
+    { id: 3, title: "Hoody", price: 36.99 },
+    { id: 4 , title: "Pants", price: 9.99 }
 ];
 
 const Featured = () => {
     const renderedList = products.map(item => (
-        <Card key={item.title} title={item.title} price={item.price} />
+        <Card
+            key={item.title}
+            id={item.id}
+            title={item.title}
+            price={item.price}
+        />
     ));
 
     return (
