@@ -4,13 +4,22 @@ import { FaTimes } from "react-icons/fa";
 
 import "./styles.scss";
 
-const Modal = () => {
+const Modal = props => {
     return ReactDOM.createPortal(
-        <div className="modal">
-            <div className="content">
+        <div
+            onClick={e => { e.stopPropagation(); props.onClick(false) }}
+            className="modal"
+        >
+            <div
+                onClick={e => e.stopPropagation()}
+                className="content"
+            >
                 <div className="header">
                     <h1>Title</h1>
-                    <FaTimes size={26} />
+                    <FaTimes
+                        onClick={() => props.onClick(false)}
+                        size={26}
+                    />
                 </div>
 
                 <div className="items-list">

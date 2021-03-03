@@ -8,12 +8,11 @@ const Cart = () => {
 
     const renderModal = () => {
         if(modalOpened) {
-            return <Modal />
+            return <Modal onClick={setModalOpened} />
         }
 
         return null;
     };
-
     return (
         <button
             onClick={() => setModalOpened(true)}
