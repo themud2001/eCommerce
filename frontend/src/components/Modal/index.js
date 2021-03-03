@@ -17,11 +17,10 @@ const Modal = () => {
                     Items
                 </div>
 
-                <div className="total">
+                <div className="bottom-content">
                     <h3>Your total is: 9.99$</h3>
+                    <button>CHECKOUT</button>
                 </div>
-
-                <button>CHECKOUT</button>
             </div>
         </div>,
         document.body
