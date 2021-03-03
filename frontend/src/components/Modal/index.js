@@ -5,7 +5,7 @@ import "./styles.scss";
 
 const Modal = () => {
     return ReactDOM.createPortal(
-        <div className="modal-content">
+        <div className="modal">
             <div className="header">
                 <h1>Title</h1>
             </div>
@@ -18,7 +18,7 @@ const Modal = () => {
                 <button>CHECKOUT</button>
             </div>
         </div>,
-        document.querySelector(".modal")
+        document.body
     );
 };
 
