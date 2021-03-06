@@ -18,6 +18,9 @@
 .env.test.local
 .env.production.local
 
+# Visual Studio
+/.vs
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
