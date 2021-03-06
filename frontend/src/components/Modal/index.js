@@ -1,10 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { connect } from "react-redux";
 import { FaTimes } from "react-icons/fa";
 
+import { removeFromCart } from "../../actions";
 import "./styles.scss";
 
 const Modal = props => {
+    console.log(props);
+    const renderedProducts = () => {
+        if(props.products.length !== 0) {
+            return props.products.map(item => (
+                <div className="cart-item" key={item.id}>
+                    <div className="item-image">
+                        <img width="150" height="150" />
+                    </div>
+
+                    <div className="item-description">
+                        <h2>{item.title}</h2>
+                        <h4>{item.price}$</h4>
+                    </div>
+
+                    <button
+                        className="remove-button"
+                        onClick={() => props.removeFromCart(item.id)}
+                    >REMOVE</button>
+                </div>
+            ));
+        }
+
+        return <h3 style={{ textAlign: "center" }}>You have no items in your cart!</h3>
+    }
+
     return ReactDOM.createPortal(
         <div
             onClick={e => { e.stopPropagation(); props.onClick(false) }}
@@ -23,7 +50,7 @@ const Modal = props => {
                 </div>
 
                 <div className="items-list">
-                    Items
+                    {renderedProducts()}
                 </div>
 
                 <div className="bottom-content">
@@ -36,4 +63,8 @@ const Modal = props => {
     );
 };
 
-export default Modal;
+const mapStateToProps = state => {
+    return { products: Object.values(state.cart) };
+};
+
+export default connect(mapStateToProps, { removeFromCart })(Modal);

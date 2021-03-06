@@ -14,7 +14,6 @@
         margin-top: 50vh;
         transform: translateY(-50%);
         background-color: #fefefe;
-        overflow: auto;
         box-shadow: 0px 0px 50px #00000044;
 
         .header {
@@ -33,6 +32,36 @@
                 position: absolute;
                 top: 27px;
                 right: 25px;
+            }
+        }
+
+        .items-list {
+            height: 292px;
+            margin: 10px;
+            overflow: auto;
+
+            .cart-item {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                height: 150px;
+
+                .item-image {
+                    display: inline-block;
+                    margin-left: 75px;
+                }
+
+                .item-description {
+                    display: inline-block;
+                    text-align: center;
+                    margin: auto auto;
+                }
+
+                .remove-button {
+                    cursor: pointer;
+                    border: 0;
+                    color: #000;
+                    background-color: transparent;
+                }
             }
         }
 
