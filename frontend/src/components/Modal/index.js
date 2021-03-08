@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { FaTimes } from "react-icons/fa";
 
@@ -55,7 +56,9 @@ const Modal = props => {
 
                 <div className="bottom-content">
                     <h3>Your total is: 9.99$</h3>
-                    <button>CHECKOUT</button>
+                    <Link to="/checkout">
+                        <button className="checkout-button" >CHECKOUT</button>
+                    </Link>
                 </div>
             </div>
         </div>,
