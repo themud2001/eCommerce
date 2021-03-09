@@ -34,15 +34,19 @@ const Modal = props => {
 
     const renderBottomContent = () => {
         if(props.products.length !== 0) {
+            let totalPrice = 0;
+            props.products.forEach(item => totalPrice += item.price);
+
             return (
                 <div className="bottom-content">
+                    <h3>Your total is: <b>{totalPrice}$</b></h3>
                     <Link to="/checkout">
                         <button className="checkout-button">CHECKOUT</button>
                     </Link>
                 </div>
             );
         }
-    }
+    };
 
     return ReactDOM.createPortal(
         <div
@@ -54,7 +58,7 @@ const Modal = props => {
                 className="content"
             >
                 <div className="header">
-                    <h1>CART</h1>
+                    <h1>Title</h1>
                     <FaTimes
                         onClick={() => props.onClick(false)}
                         size={26}
