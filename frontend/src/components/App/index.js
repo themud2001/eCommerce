@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import About from "../About";
 import Contact from "../Contact";
@@ -15,10 +15,10 @@ class App extends React.Component {
             <div>
                 <BrowserRouter>
                     <Header />
-                    <Route path="/" exact component={Landing} />
-                    <Route path="/" exact component={Featured} />
-                    <Route path="/about" exact component={About} />
-                    <Route path="/contact" exact component={Contact} />
+                        <Route path="/" exact component={Landing} />
+                        <Route path="/" exact component={Featured} />
+                        <Route path="/about" exact component={About} />
+                        <Route path="/contact" exact component={Contact} />
                     <Footer />
                 </BrowserRouter>
             </div>
