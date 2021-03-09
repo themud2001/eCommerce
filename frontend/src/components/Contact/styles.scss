@@ -24,7 +24,7 @@
                 "message message message"
                 "message message message"
                 "submit free free";
-            grid-template-columns: 600px;
+            grid-template-columns: 100px 300px 100px;
             justify-content: center;
 
             input {
@@ -73,10 +73,10 @@
                 cursor: pointer;
                 color: #FFF;
                 margin-top: 10px;
-                width: 100px;
                 height: 40px;
                 border: 1px solid #000;
                 background-color: #000;
+                outline: none;
 
                 &:hover {
                     color: #000;
