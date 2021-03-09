@@ -25,6 +25,7 @@ const Cart = () => {
     };
     return (
         <button
+            style={{ outline: "none" }}
             onClick={() => setModalOpened(true)}
             className="item cart"
         >
