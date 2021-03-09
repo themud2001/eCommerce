@@ -8,8 +8,7 @@ import { removeFromCart } from "../../actions";
 import "./styles.scss";
 
 const Modal = props => {
-    console.log(props);
-    const renderedProducts = () => {
+    const renderProducts = () => {
         if(props.products.length !== 0) {
             return props.products.map(item => (
                 <div className="cart-item" key={item.id}>
@@ -33,6 +32,18 @@ const Modal = props => {
         return <h3 style={{ textAlign: "center" }}>You have no items in your cart!</h3>
     }
 
+    const renderBottomContent = () => {
+        if(props.products.length !== 0) {
+            return (
+                <div className="bottom-content">
+                    <Link to="/checkout">
+                        <button className="checkout-button">CHECKOUT</button>
+                    </Link>
+                </div>
+            );
+        }
+    }
+
     return ReactDOM.createPortal(
         <div
             onClick={e => { e.stopPropagation(); props.onClick(false) }}
@@ -51,15 +62,10 @@ const Modal = props => {
                 </div>
 
                 <div className="items-list">
-                    {renderedProducts()}
+                    {renderProducts()}
                 </div>
 
-                <div className="bottom-content">
-                    <h3>Your total is: 9.99$</h3>
-                    <Link to="/checkout">
-                        <button className="checkout-button" >CHECKOUT</button>
-                    </Link>
-                </div>
+                {renderBottomContent()}
             </div>
         </div>,
         document.body
