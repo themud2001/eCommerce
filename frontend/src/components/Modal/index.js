@@ -58,7 +58,7 @@ const Modal = props => {
                 className="content"
             >
                 <div className="header">
-                    <h1>Title</h1>
+                    <h1>CART</h1>
                     <FaTimes
                         onClick={() => props.onClick(false)}
                         size={26}

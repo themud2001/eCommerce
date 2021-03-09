@@ -22,8 +22,6 @@ const Cart = () => {
                 />
             );
         }
-
-        return null;
     };
     return (
         <button
