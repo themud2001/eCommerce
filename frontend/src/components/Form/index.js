@@ -14,6 +14,7 @@ class Form extends React.Component {
                     >{label}</label>
                     <textarea
                         className={meta.touched && meta.error ? "error" : ""}
+                        placeholder={meta.touched && meta.error ? meta.error : ""}
                         {...input}
                     ></textarea>
                 </React.Fragment>
@@ -28,6 +29,7 @@ class Form extends React.Component {
                 >{label}</label>
                 <input
                     className={meta.touched && meta.error ? "error" : ""}
+                    placeholder={meta.touched && meta.error ? meta.error : ""}
                     {...input}
                 />
             </React.Fragment>

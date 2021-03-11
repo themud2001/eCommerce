@@ -54,8 +54,12 @@ form {
     }
 
     .error {
-        border-color: red;
-        color: red;
+        border-color: #F00;
+        color: #F00;
+
+        &::placeholder {
+            color: #F00;
+        }
     }
 
     button {
