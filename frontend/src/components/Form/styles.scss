@@ -53,6 +53,11 @@ form {
         outline: none;
     }
 
+    .error {
+        border-color: red;
+        color: red;
+    }
+
     button {
         grid-area: submit;
         cursor: pointer;

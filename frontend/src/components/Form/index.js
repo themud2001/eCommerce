@@ -4,21 +4,32 @@ import { Field, reduxForm } from "redux-form";
 import "./styles.scss";
 
 class Form extends React.Component {
-    renderInput({ input, label, meta }) {
-        console.log(meta.error);
+    renderInput({ input, label, meta}) {
         if(input.name === "message") {
             return (
                 <React.Fragment>
-                    <label htmlFor={input.name}>{label}</label>
-                    <textarea {...input}></textarea>
+                    <label
+                        className={meta.touched && meta.error ? "error" : ""}
+                        htmlFor={input.name}
+                    >{label}</label>
+                    <textarea
+                        className={meta.touched && meta.error ? "error" : ""}
+                        {...input}
+                    ></textarea>
                 </React.Fragment>
             );
         }
 
         return (
             <React.Fragment>
-                <label htmlFor={input.name}>{label}</label>
-                <input {...input} />
+                <label
+                    className={meta.touched && meta.error ? "error" : ""}
+                    htmlFor={input.name}
+                >{label}</label>
+                <input
+                    className={meta.touched && meta.error ? "error" : ""}
+                    {...input}
+                />
             </React.Fragment>
         );
     }
