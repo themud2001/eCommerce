@@ -1,5 +1,6 @@
 import React from "react";
 
+import Form from "../Form";
 import "./styles.scss";
 
 const Contact = () => {
@@ -10,18 +11,7 @@ const Contact = () => {
             </div>
 
             <div className="form-container">
-                <form>
-                    <label htmlFor="name">Full Name</label>
-                    <input name="name" />
-
-                    <label htmlFor="email">E-mail</label>
-                    <input name="email" />
-
-                    <label htmlFor="message">Your message</label>
-                    <textarea name="message"></textarea>
-
-                    <button type="submit">SUBMIT</button>
-                </form>
+                <Form />
             </div>
         </div>
     );
