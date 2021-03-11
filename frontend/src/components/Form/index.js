@@ -5,7 +5,6 @@ import "./styles.scss";
 
 class Form extends React.Component {
     renderInput({ input, label, meta }) {
-        console.log(meta);
         if(input.name === "message") {
             return (
                 <React.Fragment>
@@ -25,7 +24,7 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form>
+            <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
                 <Field name="name" component={this.renderInput} label="Full Name" />
                 <Field name="email" component={this.renderInput} label="E-mail" />
                 <Field name="message" component={this.renderInput} label="Your Message" />
