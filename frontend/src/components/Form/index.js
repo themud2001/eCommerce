@@ -5,6 +5,7 @@ import "./styles.scss";
 
 class Form extends React.Component {
     renderInput({ input, label, meta }) {
+        console.log(meta.error);
         if(input.name === "message") {
             return (
                 <React.Fragment>
@@ -34,7 +35,25 @@ class Form extends React.Component {
     }
 }
 
+const validate = ({name="", email="", message=""}) => {
+    const errors = {};
+
+    if(name.trim() === "") {
+        errors.name = "You have to specify a valid name!";
+    }
+
+    if(email.trim() === "") {
+        errors.email = "You have to specify a valid E-mail!";
+    }
+
+    if(message.trim() === "") {
+        errors.message = "You have to specify a valid message!";
+    }
+
+    return errors;
+}
+
 export default reduxForm({
     form: "contactForm",
-    validate: () => 10
+    validate
 })(Form);
