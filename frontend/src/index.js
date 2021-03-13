@@ -1,6 +1,6 @@
 import React from "react";
 import { createStore, compose, applyMiddleware } from "redux";
-import { reduxThunk } from "redux-thunk";
+import reduxThunk from "redux-thunk";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
 
