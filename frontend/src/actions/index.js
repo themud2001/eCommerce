@@ -11,3 +11,10 @@ export const removeFromCart = id => {
         payload: id
     };
 };
+
+export const sendContactMessage = formValues => {
+    return {
+        type: "SEND_CONTACT_MESSAGE",
+        payload: formValues
+    };
+};

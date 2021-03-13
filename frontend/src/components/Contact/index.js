@@ -1,9 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
 
+import { sendContactMessage } from "../actions";
 import Form from "../Form";
 import "./styles.scss";
 
-const Contact = () => {
+const Contact = props => {
+    const handleFormSubmit = formValues => {
+        props.sendContactMessage(formValues);
+    };
+
     return (
         <div className="contact-container">
             <div className="header">
@@ -11,10 +17,10 @@ const Contact = () => {
             </div>
 
             <div className="form-container">
-                <Form />
+                <Form onSubmit={handleFormSubmit} />
             </div>
         </div>
     );
 };
 
-export default Contact;
+export default connect(null, { sendContactMessage })(Contact);
