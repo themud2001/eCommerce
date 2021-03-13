@@ -52,15 +52,17 @@ const validate = ({name="", email="", message=""}) => {
     const errors = {};
 
     if(name.trim() === "") {
-        errors.name = "You have to specify a valid name!";
+        errors.name = "Required";
     }
 
     if(email.trim() === "") {
-        errors.email = "You have to specify a valid E-mail!";
+        errors.email = "Required";
+    } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+        errors.email = "Invalid E-mail!";
     }
 
     if(message.trim() === "") {
-        errors.message = "You have to specify a valid message!";
+        errors.message = "Required";
     }
 
     return errors;
