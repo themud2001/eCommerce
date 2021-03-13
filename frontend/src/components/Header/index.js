@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiUser } from "react-icons/fi";
 
 import Dropdown from "../Dropdown/";
 import Cart from "../Cart";
+import User from "../User";
 import "./styles.scss";
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
 
             <div className="right">
                 <Cart />
-                <Link to="/user" className="item user"><FiUser size={22} /></Link>
+                <User />
             </div>
         </div>
     );
