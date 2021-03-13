@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { sendContactMessage } from "../actions";
+import { sendContactMessage } from "../../actions";
 import Form from "../Form";
 import "./styles.scss";
 
