@@ -38,7 +38,7 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.props.handleSubmit(this.props.onSubmit}>
+            <form onSubmit={this.props.handleSubmit(this.props.onSubmit)}>
                 <Field name="name" component={this.renderInput} label="Full Name" />
                 <Field name="email" component={this.renderInput} label="E-mail" />
                 <Field name="message" component={this.renderInput} label="Your Message" />
