@@ -1,8 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import "./styles.scss";
-
 const Form = ({ children, onSubmit, ...props }) => {
     const { register, handleSubmit, errors } = useForm({ mode: "onTouched" });
 
