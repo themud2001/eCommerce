@@ -22,7 +22,7 @@ const Contact = props => {
                     <input name="name" validationOptions={{ required: true }} />
 
                     <label htmlFor="email">E-mail</label>
-                    <input name="email" validationOptions={{ required: true }} />
+                    <input name="email" validationOptions={{ required: true, pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i }} />
 
                     <label htmlFor="message">Message</label>
                     <textarea name="message" validationOptions={{ required: true }}></textarea>
