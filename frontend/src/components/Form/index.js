@@ -13,7 +13,7 @@ const Form = props => {
             return <input
                 key={name}
                 name={name}
-                className={errors[name] && "error"}
+                className={errors[name] ? "error" : ""}
                 ref={register(validationOptions)}
                 {...rest}
             />;
@@ -21,7 +21,7 @@ const Form = props => {
             return <textarea
                 key={name}
                 name={name}
-                className={errors[name] && "error"}
+                className={errors[name] ? "error" : ""}
                 ref={register(validationOptions)}
                 {...rest}
             ></textarea>;
