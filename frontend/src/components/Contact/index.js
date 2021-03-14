@@ -17,7 +17,18 @@ const Contact = props => {
             </div>
 
             <div className="form-container">
-                <Form onSubmit={handleFormSubmit} />
+                <Form onSubmit={handleFormSubmit}>
+                    <label htmlFor="name">Full Name</label>
+                    <input name="name" />
+
+                    <label htmlFor="email">E-mail</label>
+                    <input name="email" />
+
+                    <label htmlFor="message">Message</label>
+                    <textarea name="message"></textarea>
+                    
+                    <button type="submit">SUBMIT</button>
+                </Form>
             </div>
         </div>
     );

@@ -4,45 +4,56 @@ import { useForm } from "react-hook-form";
 
 import "./styles.scss";
 
-const Form = () => {
-    const renderInput = ({ input, label, meta}) => {
-        if(input.name === "message") {
-            return (
-                <React.Fragment>
-                    <label
-                        className={meta.touched && meta.error ? "error" : ""}
-                        htmlFor={input.name}
-                    >{label}</label>
-                    <textarea
-                        className={meta.touched && meta.error ? "error" : ""}
-                        placeholder={meta.touched && meta.error ? meta.error : ""}
-                        {...input}
-                    ></textarea>
-                </React.Fragment>
-            );
+const Form = props => {
+    const { register, handleSubmit } = useForm({ mode: "onTouched" });
+
+    const renderInput = component => {
+        if(component.type === "input") {
+            return <input key={component.props.name} ref={register} {...component.props} />;
+        } else if(component.type === "textarea") {
+            return <textarea key={component.props.name} ref={register} {...component.props}></textarea>;
         }
 
-        return (
-            <React.Fragment>
-                <label
-                    className={meta.touched && meta.error ? "error" : ""}
-                    htmlFor={input.name}
-                >{label}</label>
-                <input
-                    className={meta.touched && meta.error ? "error" : ""}
-                    placeholder={meta.touched && meta.error ? meta.error : ""}
-                    {...input}
-                />
-            </React.Fragment>
-        );
-    }
+        return component;
+
+        // if(input.name === "message") {
+        //     return (
+        //         <React.Fragment>
+        //             <label
+        //                 className={meta.touched && meta.error ? "error" : ""}
+        //                 htmlFor={input.name}
+        //             >{label}</label>
+        //             <textarea
+        //                 className={meta.touched && meta.error ? "error" : ""}
+        //                 placeholder={meta.touched && meta.error ? meta.error : ""}
+        //                 {...input}
+        //             ></textarea>
+        //         </React.Fragment>
+        //     );
+        // }
+
+        // return (
+        //     <React.Fragment>
+        //         <label
+        //             className={meta.touched && meta.error ? "error" : ""}
+        //             htmlFor={input.name}
+        //         >{label}</label>
+        //         <input
+        //             className={meta.touched && meta.error ? "error" : ""}
+        //             placeholder={meta.touched && meta.error ? meta.error : ""}
+        //             {...input}
+        //         />
+        //     </React.Fragment>
+        // );
+    };
 
     return (
-        <form onSubmit={this.props.handleSubmit(this.props.onSubmit)}>
-            <Field name="name" component={this.renderInput} label="Full Name" />
+        <form onSubmit={handleSubmit(() => console.log("Hey"))}>
+            {/* <Field name="name" component={this.renderInput} label="Full Name" />
             <Field name="email" component={this.renderInput} label="E-mail" />
-            <Field name="message" component={this.renderInput} label="Your Message" />
-            <button type="submit">SUBMIT</button>
+            <Field name="message" component={this.renderInput} label="Your Message" /> */}
+            
+            {props.children.map(renderInput)}
         </form>
     );
 }
@@ -67,7 +78,4 @@ const Form = () => {
 //     return errors;
 // }
 
-export default reduxForm({
-    form: "contactForm",
-    validate
-})(Form);
+export default Form;
