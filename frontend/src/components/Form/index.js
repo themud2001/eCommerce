@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import "./styles.scss";
 
-const Form = props => {
+const Form = ({ children, onSubmit, ...props }) => {
     const { register, handleSubmit, errors } = useForm({ mode: "onTouched" });
 
     const renderInput = component => {
@@ -30,8 +30,8 @@ const Form = props => {
     };
 
     return (
-        <form onSubmit={handleSubmit(() => console.log("Hey"))}>            
-            {props.children.map(renderInput)}
+        <form onSubmit={handleSubmit(onSubmit)} {...props}>            
+            {children.map(renderInput)}
         </form>
     );
 }
