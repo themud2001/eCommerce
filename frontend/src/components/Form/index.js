@@ -34,4 +34,8 @@ const Form = ({ children, onSubmit, ...props }) => {
     );
 }
 
+Form.defaultProps = {
+    children: []
+};
+
 export default Form;
