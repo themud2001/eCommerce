@@ -19,14 +19,14 @@ const Contact = props => {
             <div className="form-container">
                 <Form onSubmit={handleFormSubmit}>
                     <label htmlFor="name">Full Name</label>
-                    <input name="name" />
+                    <input name="name" validationOptions={{ required: true }} />
 
                     <label htmlFor="email">E-mail</label>
-                    <input name="email" />
+                    <input name="email" validationOptions={{ required: true }} />
 
                     <label htmlFor="message">Message</label>
-                    <textarea name="message"></textarea>
-                    
+                    <textarea name="message" validationOptions={{ required: true }}></textarea>
+
                     <button type="submit">SUBMIT</button>
                 </Form>
             </div>
