@@ -23,12 +23,14 @@ class Login extends React.Component {
 
                         <button type="submit">LOG IN</button>
                     </Form>
+                </div>
 
-                    <div className="alternative">
-                        <p>Or</p>
-                        <Link to="/register">Create a new account?</Link>
-                    </div>
+                <div className="alternative">
+                    <p>Or</p>
+                    <Link to="/register">Create a new account?</Link>
+                </div>
 
+                <div className="google-container">
                     <GoogleAuth />
                 </div>
             </div>

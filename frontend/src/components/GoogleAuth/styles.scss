@@ -1,0 +1,18 @@
+.google-button {
+    cursor: pointer;
+    display: flex;
+    border: 1px solid #000;
+    border-radius: 0px;
+    background-color: #FFF;
+    align-items: center;
+    padding: 10px 20px;
+    outline: none;
+
+    &:hover {
+        background-color: #eeeeeedf;
+    }
+
+    span {
+        padding-left: 10px;
+    }
+}
