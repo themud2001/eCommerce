@@ -7,7 +7,7 @@ import "./styles.scss";
 class User extends React.Component {
     render() {
         return (
-            <Link to="/signin" className="item user"><FiUser size={22} /></Link>
+            <Link to="/login" className="item user"><FiUser size={22} /></Link>
         );
     }
 }

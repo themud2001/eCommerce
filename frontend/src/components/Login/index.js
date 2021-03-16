@@ -5,7 +5,7 @@ import Form from "../Form";
 import GoogleAuth from "../GoogleAuth";
 import "./styles.scss";
 
-class SignIn extends React.Component {
+class Login extends React.Component {
     render() {
         return (
             <div className="login-container">
@@ -38,4 +38,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn;
+export default Login;
