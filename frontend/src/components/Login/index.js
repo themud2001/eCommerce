@@ -10,7 +10,7 @@ class Login extends React.Component {
         return (
             <div className="login-container">
                 <div className="header">
-                    <h1>Log In</h1>
+                    <h1>Sign In</h1>
                 </div>
 
                 <div className="form-container">
@@ -21,7 +21,7 @@ class Login extends React.Component {
                         <label htmlFor="password">Password</label>
                         <input name="password" type="password" validationOptions={{ required: true }} />
 
-                        <button type="submit">LOG IN</button>
+                        <button type="submit">SIGN IN</button>
                     </Form>
                 </div>
 
