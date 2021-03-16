@@ -1,4 +1,5 @@
 import messages from "../apis/messages";
+import history from "../history";
 
 export const addToCart = item => {
     return {
@@ -18,4 +19,20 @@ export const sendContactMessage = formValues => async dispatch => {
     const { data } = await messages.post(formValues);
 
     dispatch({ type: "SEND_CONTACT_MESSAGE", payload: data });
+};
+
+export const signIn = auth => async dispatch => {
+    await auth.signIn();
+    dispatch({
+        type: "SIGN_IN",
+        payload: auth.isSignedIn.get()
+    });
+};
+
+export const signOut = auth => async dispatch => {
+    await auth.signOut();
+    dispatch({
+        type: "SIGN_OUT",
+        payload: auth.isSignedIn.get()
+    });
 };
