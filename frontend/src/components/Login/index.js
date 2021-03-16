@@ -27,7 +27,7 @@ class Login extends React.Component {
 
                 <div className="alternative">
                     <p>Or</p>
-                    <Link to="/register">Create a new account?</Link>
+                    <Link to="/register">Create a new account</Link>
                 </div>
 
                 <div className="google-container">
