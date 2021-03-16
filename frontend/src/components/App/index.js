@@ -1,6 +1,7 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 
+import history from "../../history";
 import About from "../About";
 import Contact from "../Contact";
 import Header from "../Header";
@@ -14,7 +15,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <BrowserRouter>
+                <Router history={history}>
                     <Header />
                         <Route path="/" exact component={Landing} />
                         <Route path="/" exact component={Featured} />
@@ -22,7 +23,7 @@ class App extends React.Component {
                         <Route path="/contact" exact component={Contact} />
                         <Route path="/login" exact component={Login} />
                     <Footer />
-                </BrowserRouter>
+                </Router>
             </div>
         );
     }

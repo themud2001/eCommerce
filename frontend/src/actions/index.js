@@ -27,6 +27,7 @@ export const signIn = auth => async dispatch => {
         type: "SIGN_IN",
         payload: auth.isSignedIn.get()
     });
+    history.push("/");
 };
 
 export const signOut = auth => async dispatch => {
