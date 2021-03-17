@@ -21,19 +21,20 @@ export const sendContactMessage = formValues => async dispatch => {
     dispatch({ type: "SEND_CONTACT_MESSAGE", payload: data });
 };
 
+export const changeSignedIn = isSignedIn => {
+    return {
+        type: "CHANGE_SIGNED_IN",
+        payload: isSignedIn
+    }
+}
+
 export const signIn = auth => async dispatch => {
     await auth.signIn();
-    dispatch({
-        type: "SIGN_IN",
-        payload: auth.isSignedIn.get()
-    });
+    dispatch(changeSignedIn(true));
     history.push("/");
 };
 
 export const signOut = auth => async dispatch => {
     await auth.signOut();
-    dispatch({
-        type: "SIGN_OUT",
-        payload: auth.isSignedIn.get()
-    });
+    dispatch(changeSignedIn(false));
 };

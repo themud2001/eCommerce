@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { FcGoogle } from "react-icons/fc";
 
-import { signIn } from "../../actions";
+import { signIn, changeSignedIn } from "../../actions";
 import "./styles.scss";
 
 class GoogleAuth extends React.Component {
@@ -13,8 +13,18 @@ class GoogleAuth extends React.Component {
                 scope: "email"
             }).then(() => {
                 this.auth = window.gapi.auth2.getAuthInstance();
+                this.handleAuthChange(this.auth.isSignedIn.get());
+                this.auth.isSignedIn.listen(this.handleAuthChange);
             });
         });
+    }
+
+    handleAuthChange = isSignedIn => {
+        if(isSignedIn) {
+            this.props.changeSignedIn(true);
+        } else {
+            this.props.changeSignedIn(false);
+        }
     }
 
     render() {
@@ -27,4 +37,4 @@ class GoogleAuth extends React.Component {
     }
 }
 
-export default connect(null, { signIn })(GoogleAuth);
+export default connect(null, { signIn, changeSignedIn })(GoogleAuth);
