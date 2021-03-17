@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { changeSignedIn, updateGoogleAuthObject } from "../../actions";
+import { changeSignedIn } from "../actions";
 
-class GoogleAuth extends React.Component {
+const Context = React.createContext();
+
+export class GoogleAuth extends React.Component {
     componentDidMount() {
         window.gapi.load("client:auth2", () => {
             window.gapi.client.init({
@@ -13,7 +15,6 @@ class GoogleAuth extends React.Component {
                 this.auth = window.gapi.auth2.getAuthInstance();
                 this.handleAuthChange(this.auth.isSignedIn.get());
                 this.auth.isSignedIn.listen(this.handleAuthChange);
-                this.props.updateGoogleAuthObject(this.auth);
             });
         });
     }
@@ -27,8 +28,12 @@ class GoogleAuth extends React.Component {
     }
 
     render() {
-        return null;
+        return (
+            <Context.Provider value={this.auth}>
+                {this.props.children}
+            </Context.Provider>
+        );
     }
 }
 
-export default connect(null, { changeSignedIn, updateGoogleAuthObject })(GoogleAuth);
+export default connect(null, { changeSignedIn })(Context);

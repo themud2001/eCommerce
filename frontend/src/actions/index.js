@@ -25,16 +25,23 @@ export const changeSignedIn = isSignedIn => {
     return {
         type: "CHANGE_SIGNED_IN",
         payload: isSignedIn
-    }
-}
+    };
+};
 
-export const signIn = auth => async dispatch => {
-    await auth.signIn();
+export const signIn = () => async (dispatch, getState) => {
+    await getState().auth.authObject.signIn();
     dispatch(changeSignedIn(true));
     history.push("/");
 };
 
-export const signOut = auth => async dispatch => {
-    await auth.signOut();
+export const signOut = () => async (dispatch, getState) => {
+    await getState().auth.authObject.signOut();
     dispatch(changeSignedIn(false));
+};
+
+export const updateGoogleAuthObject = auth => {
+    return {
+        type: "UPDATE_GOOGLE_AUTH_OBJECT",
+        payload: auth
+    };
 };

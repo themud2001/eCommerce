@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Form from "../Form";
-import GoogleAuth from "../GoogleAuth";
+import GoogleButton from "../GoogleButton";
 import "./styles.scss";
 
 class Login extends React.Component {
@@ -31,7 +31,7 @@ class Login extends React.Component {
                 </div>
 
                 <div className="google-container">
-                    <GoogleAuth />
+                    <GoogleButton />
                 </div>
             </div>
         );
