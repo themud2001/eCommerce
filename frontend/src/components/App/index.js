@@ -9,7 +9,7 @@ import GoogleAuth from "../GoogleAuth";
 import Header from "../Header";
 import Landing from "../Landing";
 import Featured from "../Featured";
-import Login from "../Login";
+import LogIn from "../LogIn";
 import Footer from "../Footer";
 import "./styles.scss";
 
@@ -24,7 +24,7 @@ class App extends React.Component {
                     <Route path="/" exact component={Featured} />
                     <Route path="/about" exact component={About} />
                     <Route path="/contact" exact component={Contact} />
-                    <Route path="/login" exact component={Login} />
+                    <Route path="/login" exact component={LogIn} />
                     <Footer />
                 </Router>
             </div>
