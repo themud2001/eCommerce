@@ -2,7 +2,6 @@ import React from "react";
 import { Router, Route } from "react-router-dom";
 
 import history from "../../history";
-// import { GoogleAuth } from "../../contexts/GoogleAuthContext";
 import About from "../About";
 import Contact from "../Contact";
 import GoogleAuth from "../GoogleAuth";
