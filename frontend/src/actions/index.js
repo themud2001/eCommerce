@@ -1,5 +1,6 @@
 import messages from "../apis/messages";
 import history from "../history";
+import authObject from "../GoogleAuth";
 
 export const addToCart = item => {
     return {
@@ -28,13 +29,17 @@ export const changeSignedIn = isSignedIn => {
     };
 };
 
-export const signIn = () => async (dispatch, getState) => {
-    await getState().auth.authObject.signIn();
-    dispatch(changeSignedIn(true));
-    history.push("/");
+export const signIn = () => async dispatch => {
+    authObject.then(async object => {
+        await object.signIn();
+        dispatch(changeSignedIn(true));
+        history.push("/");
+    });
 };
 
-export const signOut = () => async (dispatch, getState) => {
-    await getState().auth.authObject.signOut();
-    dispatch(changeSignedIn(false));
+export const signOut = () => async dispatch => {
+    authObject.then(async object => {
+        await object.signOut();
+        dispatch(changeSignedIn(false));
+    });    
 };
