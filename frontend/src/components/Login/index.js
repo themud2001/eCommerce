@@ -1,11 +1,19 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import history from "../../history";
 import Form from "../Form";
 import GoogleButton from "../GoogleButton";
 import "./styles.scss";
 
-class Login extends React.Component {
+class LogIn extends React.Component {
+    componentDidMount() {
+        if(this.props.isSignedIn) {
+            history.push("/");
+        }
+    }
+
     render() {
         return (
             <div className="login-container">
@@ -38,4 +46,8 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+const mapStateToProps = state => {
+    return { isSignedIn: state.auth.isSignedIn };
+};
+
+export default connect(mapStateToProps)(LogIn);
