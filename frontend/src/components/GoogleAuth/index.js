@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import authObject from "../../GoogleAuth";
-import { changeSignedIn, updateGoogleAuthObject } from "../../actions";
+import { changeSignedIn } from "../../actions";
 
 class GoogleAuth extends React.Component {
     componentDidMount() {
@@ -25,4 +25,4 @@ class GoogleAuth extends React.Component {
     }
 }
 
-export default connect(null, { changeSignedIn, updateGoogleAuthObject })(GoogleAuth);
+export default connect(null, { changeSignedIn })(GoogleAuth);

@@ -38,10 +38,3 @@ export const signOut = () => async (dispatch, getState) => {
     await getState().auth.authObject.signOut();
     dispatch(changeSignedIn(false));
 };
-
-export const updateGoogleAuthObject = auth => {
-    return {
-        type: "UPDATE_GOOGLE_AUTH_OBJECT",
-        payload: auth
-    };
-};
