@@ -9,6 +9,7 @@ import Header from "../Header";
 import Landing from "../Landing";
 import Featured from "../Featured";
 import LogIn from "../LogIn";
+import SignUp from "../SignUp";
 import Footer from "../Footer";
 import "./styles.scss";
 
@@ -24,6 +25,7 @@ class App extends React.Component {
                     <Route path="/about" exact component={About} />
                     <Route path="/contact" exact component={Contact} />
                     <Route path="/login" exact component={LogIn} />
+                    <Route path="/signup" exact component={SignUp} />
                     <Footer />
                 </Router>
             </div>

@@ -1,0 +1,109 @@
+.signup-container {
+    width: 800px;
+    height: auto;
+    box-shadow: 3px 3px 10px #00000066;
+    margin: 100px auto;
+    padding: 50px 25px;
+
+    .header {
+        border-bottom: 1px solid #000;
+        text-align: center;
+    }
+
+    .form-container {
+        margin-top: 60px;
+
+        form {
+            display: grid;
+            grid-template-areas:
+                "username-label username-label username-label"
+                "username username username"
+                "email-label email-label email-label"
+                "email email email"
+                "password-label password-label password-label"
+                "password password password"
+                "confirmPassword-label confirmPassword-label confirmPassword-label"
+                "confirmPassword confirmPassword confirmPassword"
+                "submit submit submit";
+            grid-template-columns: 100px 100px 100px;
+            justify-content: center;
+        
+            input {
+                padding: 10px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #00000066;
+                border-radius: 0px;
+                outline: none;
+            }
+        
+            label[for="username"] {
+                grid-area: username-label;
+            }
+
+            label[for="email"] {
+                grid-area: email-label;
+            }
+        
+            label[for="password"] {
+                grid-area: password-label;
+            }
+
+            label[for="confirmPassword"] {
+                grid-area: confirmPassword-label;
+            }
+        
+            input[name="username"] {
+                grid-area: username;
+            }
+
+            input[name="email"] {
+                grid-area: email;
+            }
+        
+            input[name="password"] {
+                grid-area: password;
+            }
+
+            input[name="confirmPassword"] {
+                grid-area: confirmPassword;
+            }
+        
+            .error {
+                border-color: #F00;
+                color: #F00;
+        
+                &::placeholder {
+                    color: #F00;
+                }
+            }
+        
+            button {
+                grid-area: submit;
+                cursor: pointer;
+                color: #FFF;
+                margin-top: 10px;
+                height: 40px;
+                border: 1px solid #000;
+                background-color: #000;
+                outline: none;
+            }
+        }
+    }
+
+    .alternative {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 30px;
+
+        a {
+            color: #000;
+            font-weight: bold;
+        }
+    }
+
+    .google-container {
+        display: flex;
+        justify-content: center;
+    }
+}
