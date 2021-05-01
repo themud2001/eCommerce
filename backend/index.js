@@ -8,7 +8,7 @@ const helmet = require("helmet");
 const databaseConnect = require("./config/db");
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cors());
 app.use(xss());
 app.use(sanitizeMongo());
