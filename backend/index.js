@@ -23,6 +23,15 @@ databaseConnect();
 
 app.use("/users", usersRoute);
 
+app.use((err, req, res, next) => {
+    if(res.headersSent) {
+        console.error("Yes"); next(err);
+    }
+
+    console.error("HAHAHA", err);
+    res.status(err.statusCode || 500).json({ error: "An error occurred" });
+});
+
 app.listen(process.env.PORT, () => {
     console.log(`The server is listening on port ${process.env.PORT}`);
 });
