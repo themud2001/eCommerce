@@ -8,6 +8,8 @@ const helmet = require("helmet");
 const databaseConnect = require("./config/db");
 const app = express();
 
+const usersRoute = require("./routes/users");
+
 app.use(express.json());
 app.use(cors());
 app.use(xss());
@@ -17,15 +19,8 @@ app.use(helmet());
 dotenv.config({ path: "./config/.env" });
 databaseConnect();
 
-const PORT = process.env.PORT || 8000;
+app.use("/users", usersRoute);
 
-app.get("/", (req, res) => {
-    console.log("req.query: ", req.query);
-    console.log("req.params: ", req.params);
-    console.log("req.body: ", req.body);
-    res.end();
-})
-
-app.listen(PORT, () => {
-    console.log(`The server is listening on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`The server is listening on port ${process.env.PORT}`);
 });
