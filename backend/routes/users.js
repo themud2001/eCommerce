@@ -1,14 +1,13 @@
 const router = require("express").Router();
-const { ObjectId } = require("mongoose").Types;
 const User = require("../models/User");
 
 router.route("/:id")
     .get((req, res, next) => {
         const { id } = req.params;
 
-        if(id.length !== 12) return next();
+        if(id.length !== 24) return next();
 
-        User.findById(ObjectId(id), (error, result) => {
+        User.findById(id, (error, result) => {
             if(error) return next(error);
             if(!result) return next();
 
