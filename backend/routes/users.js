@@ -9,7 +9,8 @@ router.get("/:id", (req, res, next) => {
     }
 
     User.findOne({ id }, (error, result) => {
-        next(new Error("Hey"));
+        if(error) return next(error);
+        if(!result) return res.status(400).json({ error: "User not found" });
 
         res.status(200).json(result);
     });
