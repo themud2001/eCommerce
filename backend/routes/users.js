@@ -1,17 +1,21 @@
 const router = require("express").Router();
+const { ObjectId } = require("mongoose").Types;
 const User = require("../models/User");
 
-router.get("/:id", (req, res, next) => {
-    const { id } = req.params;
+router.route("/:id")
+    .get((req, res, next) => {
+        const { id } = req.params;
 
-    if(isNaN(id)) return res.status(400).json({ error: "Invalid user ID" });
+        if(id.length !== 12) return next();
 
-    User.findOne({ id }, (error, result) => {
-        if(error) return next(error);
-        if(!result) return res.status(400).json({ error: "User not found" });
+        User.findById(ObjectId(id), (error, result) => {
+            if(error) return next(error);
+            if(!result) return next();
 
-        res.status(200).json(result);
+            res.status(200).json(result);
+        });
+    }, (req, res) => {
+        res.status(400).json({ error: "User not found" });
     });
-});
 
 module.exports = router;
