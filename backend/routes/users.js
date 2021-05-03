@@ -29,7 +29,7 @@ router.route("/:id")
 
             res.status(200).json(result);
         }).catch(next);
-    }), (req, res) => {
+    }, (req, res) => {
         res.status(400).json({ error: "User not found" });
     });
 
