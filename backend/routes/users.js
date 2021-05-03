@@ -4,18 +4,17 @@ const User = require("../models/User");
 router.route("/")
     .post((req, res, next) => {
         const { username, email, password } = req.body;
-        const orQuery = [
-            { username },
-            { email }
-        ];
 
-        User.findOne({ $or: orQuery })
-            .then(result => {
-                if(result) return res.status(400).json({ error: "User already exists" });
-            });
-            .catch (error => {
+        User.findOne({
+            $or: [
+                { username },
+                { email }
+            ]
+        }).then(result => {
+            if(result) return res.status(400).json({ error: "User already exists" });
 
-        })
+            res.status(200).json(result);
+        }).catch(next);
     });
 
 router.route("/:id")
@@ -24,13 +23,13 @@ router.route("/:id")
 
         if (id.length !== 24) return next();
 
-        User.findById(id, (error, result) => {
+        User.findById(id).then(result => {
             if (error) return next(error);
             if (!result) return next();
 
             res.status(200).json(result);
-        });
-    }, (req, res) => {
+        }).catch(next);
+    }), (req, res) => {
         res.status(400).json({ error: "User not found" });
     });
 
