@@ -14,7 +14,7 @@ router.route("/")
         User.findOne({ $or: orQuery })
             .exec()
             .then(result => {
-                if(result) return res.status(400).json({ error: "User already exists" });
+                if (result) return res.status(400).json({ error: "User already exists" });
                 
                 User.create({ username, email, password })
                     .then(user => res.status(200).json(user))
