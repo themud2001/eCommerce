@@ -24,21 +24,25 @@ router.route("/")
     });
 
 router.route("/:id")
-    .get((req, res, next) => {
-        const { id } = req.params;
+    .get(
+        (req, res, next) => {
+            const { id } = req.params;
 
-        if (id.length !== 24) return next();
+            if (id.length !== 24) return next();
 
-        User.findById(id)
-            .exec()
-            .then(result => {
-                if (!result) return next();
+            User.findById(id)
+                .exec()
+                .then(result => {
+                    if (!result) return next();
 
-                res.status(200).json(result);
-            })
-            .catch(next);
-    }, (req, res) => {
-        res.status(400).json({ error: "User not found" });
-    });
+                    res.status(200).json(result);
+                })
+                .catch(next);
+        },
+
+        (req, res) => {
+            res.status(400).json({ error: "User not found" });
+        }
+    );
 
 module.exports = router;
