@@ -9,16 +9,17 @@ router.route("/")
             { email }
         ];
 
-        // if(username.trim() === "" || email.trim() === "" || password.trim() === "") return res.status(400).json({ error: "Invalid input"});
-
         User.findOne({ $or: orQuery })
             .exec()
-            .then(result => {
+            .then(async result => {
                 if (result) return res.status(400).json({ error: "User already exists" });
-                
-                User.create({ username, email, password })
-                    .then(user => res.status(200).json(user))
-                    .catch(next);
+
+                let user = { username, email, password };
+
+                await User.validate(user, ["name", "email", "password"]);
+                user = await User.create(user);
+
+                res.status(200).json(user);
             })
             .catch(next);
     });
