@@ -16,9 +16,13 @@ router.route("/")
 
                 let user = { username, email, password };
 
-                await User.validate(user, ["username", "email", "password"]);
-                user = await User.create(user);
+                try {
+                    await User.validate(user, ["username", "email", "password"]);
+                } catch (error) {
+                    return res.status(400).json({ error: error.errors });
+                }
 
+                user = await User.create(user);
                 res.status(200).json(user);
             })
             .catch(next);
