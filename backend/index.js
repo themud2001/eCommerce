@@ -9,7 +9,7 @@ const compression = require("compression");
 const databaseConnect = require("./config/db");
 const app = express();
 
-const usersRoute = require("./routes/users");
+const authRoute = require("./routes/auth");
 const errorHandler = require("./middlewares/errorHandler");
 
 app.use(express.json());
@@ -22,7 +22,7 @@ app.use(compression());
 dotenv.config({ path: "./config/.env" });
 databaseConnect();
 
-app.use("/users", usersRoute);
+app.use("/auth", authRoute);
 
 app.use(errorHandler);
 
