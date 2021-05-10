@@ -23,8 +23,8 @@ class LogIn extends React.Component {
 
                 <div className="form-container">
                     <Form>
-                        <label htmlFor="usernameEmail">Username or E-mail</label>
-                        <input name="usernameEmail" validationOptions={{ required: true }} />
+                        <label htmlFor="email">E-mail</label>
+                        <input name="email" validationOptions={{ required: true }} />
 
                         <label htmlFor="password">Password</label>
                         <input name="password" type="password" validationOptions={{ required: true }} />

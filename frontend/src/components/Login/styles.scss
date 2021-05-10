@@ -16,8 +16,8 @@
         form {
             display: grid;
             grid-template-areas:
-                "usernameEmail-label usernameEmail-label usernameEmail-label"
-                "usernameEmail usernameEmail usernameEmail"
+                "email-label email-label email-label"
+                "email email email"
                 "password-label password-label password-label"
                 "password password password"
                 "submit submit submit";
@@ -33,16 +33,16 @@
                 outline: none;
             }
         
-            label[for="usernameEmail"] {
-                grid-area: usernameEmail-label;
+            label[for="email"] {
+                grid-area: email-label;
             }
         
             label[for="password"] {
                 grid-area: password-label;
             }
         
-            input[name="usernameEmail"] {
-                grid-area: usernameEmail;
+            input[name="email"] {
+                grid-area: email;
             }
         
             input[name="password"] {
