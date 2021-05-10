@@ -38,7 +38,13 @@ class LogIn extends React.Component {
 
                     <Form onSubmit={this.handleFormSubmit}>
                         <label htmlFor="email">E-mail</label>
-                        <input name="email" validationOptions={{ required: true }} />
+                        <input
+                            name="email"
+                            validationOptions={{
+                                required: true,
+                                pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i
+                            }}
+                        />
 
                         <label htmlFor="password">Password</label>
                         <input name="password" type="password" validationOptions={{ required: true }} />
