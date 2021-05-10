@@ -22,4 +22,33 @@ router.post("/login", async (req, res, next) => {
         .catch(next);
 });
 
+router.post("/signup", (req, res, next) => {
+    const { username, email, password } = req.body;
+
+    User.findOne({
+        $or: [
+            { username },
+            { email }
+        ]
+    })
+        .exec()
+        .then(async result => {
+            if (result) return res.status(400).json({ error: "User already exists" });
+
+            try {
+                await User.validate({ username, email, password }, ["username", "email", "password"]);
+            } catch (error) {
+                console.error(error);
+            }
+
+            const user = await User.create({ username, email, password });
+            const token = user.getToken();
+
+            res.status(200)
+                .cookie("token", token, { httpOnly: true })
+                .json({ username, email });
+        })
+        .catch(next);
+});
+
 module.exports = router;
