@@ -5,6 +5,7 @@ const xss = require("xss-clean");
 const sanitizeMongo = require("express-mongo-sanitize");
 const helmet = require("helmet");
 const compression = require("compression");
+const cookieParser = require("cookie-parser");
 
 const databaseConnect = require("./config/db");
 const app = express();
@@ -18,6 +19,7 @@ app.use(xss());
 app.use(sanitizeMongo());
 app.use(helmet());
 app.use(compression());
+app.use(cookieParser());
 
 dotenv.config({ path: "./config/.env" });
 databaseConnect();
