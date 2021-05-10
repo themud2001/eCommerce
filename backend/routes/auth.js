@@ -1,22 +1,17 @@
 const router = require("express").Router();
+const User = require("../models/User");
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res, next) => {
     const { email, password } = req.body;
 
     User.findOne({ email })
         .exec()
-        .then(async result => {
-            if (!result) return res.status(400).json({ error: "User does not exist" });
+        .then(async user => {
+            if (!user) return res.status(400).json({ error: "User does not exist" });
 
-            const user = { email, password };
+            const isMatch = await user.matchPassword(password);
 
-            try {
-                await User.validate(user, ["email", "password"]);
-            } catch (error) {
-                return res.status(400).json({ error: error.errors });
-            }
-
-            if (!user.matchPassword(user.password)) return res.status(400).json({ error: "Invalid credentials" });
+            if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
             const token = user.getToken();
 

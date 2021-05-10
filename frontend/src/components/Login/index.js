@@ -3,14 +3,26 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import history from "../../history";
+import api from "../../apis/messages";
 import Form from "../Form";
 import GoogleButton from "../GoogleButton";
 import "./styles.scss";
 
 class LogIn extends React.Component {
+    state = { error: "" };
+    
     componentDidMount() {
         if(this.props.isSignedIn) {
             history.push("/");
+        }
+    }
+
+    handleFormSubmit = async ({ email, password }) => {
+        try {
+            const { data } = await api.post("/auth/login", { email, password });
+            console.log(data);
+        } catch ({ response }) {
+            this.setState({ error: response.data.error });
         }
     }
 
@@ -22,7 +34,9 @@ class LogIn extends React.Component {
                 </div>
 
                 <div className="form-container">
-                    <Form>
+                    <p className="error-messages">{this.state.error}</p>
+
+                    <Form onSubmit={this.handleFormSubmit}>
                         <label htmlFor="email">E-mail</label>
                         <input name="email" validationOptions={{ required: true }} />
 
