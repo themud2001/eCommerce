@@ -12,6 +12,11 @@
 
     .form-container {
         margin-top: 60px;
+        
+        .error-messages {
+            color: #F00;
+            text-align: center;
+        }
 
         form {
             display: grid;

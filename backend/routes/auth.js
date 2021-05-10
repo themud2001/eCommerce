@@ -23,11 +23,12 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-    const { username, email, password } = req.body;
+    let { username, email, password } = req.body;
+    email = email.toLowerCase();
 
     User.findOne({
         $or: [
-            { username },
+            { username: { $regex: new RegExp("^" + username + "$", "i") } },
             { email }
         ]
     })
@@ -38,7 +39,7 @@ router.post("/signup", (req, res, next) => {
             try {
                 await User.validate({ username, email, password }, ["username", "email", "password"]);
             } catch (error) {
-                console.error(error);
+                return res.status(400).json({ error: error.errors });
             }
 
             const user = await User.create({ username, email, password });
@@ -46,7 +47,7 @@ router.post("/signup", (req, res, next) => {
 
             res.status(200)
                 .cookie("token", token, { httpOnly: true })
-                .json({ username, email });
+                .json(token);
         })
         .catch(next);
 });

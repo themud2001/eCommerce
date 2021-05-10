@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const UserSchema = new Schema({
     username: {
         type: String,
-        required: [true, "This field is required"]
+        required: [true, "Specify a valid username"]
     },
     email: {
         type: String,
@@ -13,11 +13,11 @@ const UserSchema = new Schema({
             validator: value => /[A-Za-z0-9!#$%&'*+\-/=\^_`{|]+@[A-Za-z0-9]+\.[A-Za-z]+/.test(value),
             message: props => `${props.value} is not a valid E-mail`
         },
-        required: [true, "This field is required"]
+        required: [true, "Specify a valid E-mail"]
     },
     password: {
         type: String,
-        required: [true, "This field is required"]
+        required: [true, "Specify a valid password"]
     }
 });
 

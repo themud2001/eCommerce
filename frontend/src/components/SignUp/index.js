@@ -2,14 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import "./styles.scss";
+import api from "../../apis/messages";
 import history from "../../history";
 import Form from "../Form";
+import "./styles.scss";
 
 class SignUp extends React.Component {
+    state = { error: "" };
+
     componentDidMount() {
         if(this.props.isSignedIn) {
             history.push("/");
+        }
+    }
+
+    handleFormSubmit = async ({ username, email, password }) => {
+        try {
+            const { data } = await api.post("/auth/signup", { username, email, password });
+            console.log(data);
+        } catch ({ response }) {
+            this.setState({ error: response.data.error });
         }
     }
 
@@ -21,7 +33,9 @@ class SignUp extends React.Component {
                 </div>
 
                 <div className="form-container">
-                    <Form>
+                    <p className="error-messages">{this.state.error}</p>
+
+                    <Form onSubmit={this.handleFormSubmit}>
                         <label htmlFor="username">Username</label>
                         <input name="username" validationOptions={{ required: true }} />
 
