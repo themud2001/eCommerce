@@ -14,7 +14,7 @@ const authRoute = require("./routes/auth");
 const errorHandler = require("./middlewares/errorHandler");
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(xss());
 app.use(sanitizeMongo());
 app.use(helmet());
