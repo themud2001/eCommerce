@@ -4,7 +4,31 @@ const User = require("../models/User");
 router.post("/login", async (req, res, next) => {
     const { email, password } = req.body;
 
-    User.findOne({ email })
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) return res.status(400).json({ error: "User does not exist" });
+
+        const isMatch = await user.matchPassword(password);
+
+        if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
+
+        const token = user.getToken();
+        const options = {
+            httpOnly: true,
+            expires: new Date(
+                Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000
+            )
+        };
+
+        res.status(200)
+            .cookie("token", token, options)
+            .json(token);
+    } catch (error) {
+        next(error);
+    }
+
+    /*User.findOne({ email })
         .exec()
         .then(async user => {
             if (!user) return res.status(400).json({ error: "User does not exist" });
@@ -19,7 +43,7 @@ router.post("/login", async (req, res, next) => {
                 .cookie("token", token, { httpOnly: true })
                 .json(token);
         })
-        .catch(next);
+        .catch(next);*/
 });
 
 router.post("/signup", (req, res, next) => {
