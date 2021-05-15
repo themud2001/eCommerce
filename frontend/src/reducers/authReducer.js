@@ -14,6 +14,8 @@ const authReducer = (state=INITIAL_STATE, action) => {
         case "LOGIN_SUCCESS":
             return {
                 ...state,
+                isSignedIn: true,
+                error: null,
                 user: action.payload.user,
                 token: action.payload.token
             };
@@ -22,6 +24,8 @@ const authReducer = (state=INITIAL_STATE, action) => {
         case "SIGNUP_SUCCESS":
             return {
                 ...state,
+                isSignedIn: true,
+                error: null,
                 user: action.payload.user,
                 token: action.payload.token
             };
