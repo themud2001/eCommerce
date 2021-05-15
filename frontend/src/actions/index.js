@@ -66,3 +66,26 @@ export const logIn = (email, password) => async dispatch => {
         dispatch(logInError(response.data));
     }
 };
+
+export const signUpError = ({ error }) => {
+    return {
+        type: "SIGNUP_ERROR",
+        payload: error
+    };
+};
+
+export const signUpSuccess = data => {
+    return {
+        type: "SIGNUP_SUCCESS",
+        payload: data
+    };
+};
+
+export const signUp = (username, email, password) => async dispatch => {
+    try {
+        const { data } = await api.post("/auth/signup", { username, email, password });
+        dispatch(signUpSuccess(data));
+    } catch ({ response }) {
+        dispatch(signUpError(response.data));
+    }
+};

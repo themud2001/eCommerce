@@ -2,21 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import api from "../../apis/api";
+import { signUp } from "../../actions";
 import history from "../../history";
 import Form from "../Form";
 import "./styles.scss";
 
 class SignUp extends React.Component {
-    state = { error: "" };
-
-    handleFormSubmit = async ({ username, email, password }) => {
-        try {
-            const { data } = await api.post("/auth/signup", { username, email, password });
-            console.log(data);
-        } catch ({ response }) {
-            this.setState({ error: response.data.error });
-        }
+    handleFormSubmit = ({ username, email, password }) => {
+        this.props.signUp(username, email, password);
     }
 
     render() {
@@ -32,7 +25,7 @@ class SignUp extends React.Component {
                 </div>
 
                 <div className="form-container">
-                    {this.state.error && <p className="error-messages">{this.state.error}</p>}
+                    {this.props.error && <p className="error-messages">{this.props.error}</p>}
 
                     <Form onSubmit={this.handleFormSubmit}>
                         <label htmlFor="username">Username</label>
@@ -74,7 +67,11 @@ class SignUp extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { isSignedIn: state.auth.isSignedIn };
+    return {
+        isSignedIn: state.auth.isSignedIn,
+        error: state.auth.error,
+        user: state.auth.user
+    };
 };
 
-export default connect(mapStateToProps)(SignUp);
+export default connect(mapStateToProps, { signUp })(SignUp);
