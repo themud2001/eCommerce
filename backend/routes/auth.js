@@ -13,6 +13,7 @@ router.post("/login", async (req, res, next) => {
 
         if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
+        const userWithoutPassword = user.omitPassword();
         const token = user.getToken();
         const options = {
             httpOnly: true,
@@ -23,7 +24,10 @@ router.post("/login", async (req, res, next) => {
 
         res.status(200)
             .cookie("token", token, options)
-            .json(token);
+            .json({
+                user: userWithoutPassword,
+                token
+            });
     } catch (error) {
         next(error);
     }
@@ -50,17 +54,21 @@ router.post("/signup", async (req, res, next) => {
         }
 
         user = await User.create({ username, email, password });
-        const token = user.getToken();
+        const token = user.getToken();        
         const options = {
             httpOnly: true,
             expires: new Date(
                 Date.now() + process.env.JWT_COOKIE_EXPIRY * 24 * 60 * 60 * 1000
             )
         };
+        user = user.omitPassword();
 
         res.status(200)
             .cookie("token", token, options)
-            .json(token);
+            .json({
+                user,
+                token
+            });
     } catch (error) {
         next(error);
     }
