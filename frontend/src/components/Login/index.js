@@ -33,7 +33,7 @@ class LogIn extends React.Component {
                 </div>
 
                 <div className="form-container">
-                    <p className="error-messages">{this.state.error}</p>
+                    {this.state.error && <p className="error-messages">{this.state.error}</p>}
 
                     <Form onSubmit={this.handleFormSubmit}>
                         <label htmlFor="email">E-mail</label>
