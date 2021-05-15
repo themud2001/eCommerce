@@ -30,6 +30,14 @@ UserSchema.methods.matchPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
+UserSchema.methods.omitPassword = function () {
+    return {
+        _id: this._id,
+        username: this.username,
+        email: this.email
+    };
+};
+
 UserSchema.methods.getToken = function () {
     return jwt.sign({ username: this.username }, process.env.JWT_SECRET);
 };
