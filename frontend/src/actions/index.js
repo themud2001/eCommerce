@@ -29,7 +29,7 @@ export const changeSignedIn = isSignedIn => {
     };
 };
 
-export const signIn = () => async dispatch => {
+export const googleSignIn = () => async dispatch => {
     authObject.then(async object => {
         await object.signIn();
         dispatch(changeSignedIn(true));
@@ -37,7 +37,7 @@ export const signIn = () => async dispatch => {
     });
 };
 
-export const signOut = () => async dispatch => {
+export const googleSignOut = () => async dispatch => {
     authObject.then(async object => {
         await object.signOut();
         dispatch(changeSignedIn(false));
