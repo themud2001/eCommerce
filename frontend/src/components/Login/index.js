@@ -27,7 +27,6 @@ class LogIn extends React.Component {
 
                 <div className="form-container">
                     {this.props.error && <p className="error-messages">{this.props.error}</p>}
-                    {this.props.user && `Welcome ${this.props.user.username}!`}
 
                     <Form onSubmit={this.handleFormSubmit}>
                         <label htmlFor="email">E-mail</label>
