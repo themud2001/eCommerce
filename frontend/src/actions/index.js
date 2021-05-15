@@ -43,3 +43,26 @@ export const googleSignOut = () => async dispatch => {
         dispatch(changeSignedIn(false));
     });    
 };
+
+export const logInError = ({ error }) => {
+    return {
+        type: "LOGIN_ERROR",
+        payload: error
+    };
+};
+
+export const logInSuccess = data => {
+    return {
+        type: "LOGIN_SUCCESS",
+        payload: data
+    };
+};
+
+export const logIn = (email, password) => async dispatch => {
+    try {
+        const { data } = await api.post("/auth/login", { email, password });
+        dispatch(logInSuccess(data));
+    } catch ({ response }) {
+        dispatch(logInError(response.data));
+    }
+};

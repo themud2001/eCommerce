@@ -2,22 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { logIn } from "../../actions";
 import history from "../../history";
-import api from "../../apis/api";
 import Form from "../Form";
 import GoogleButton from "../GoogleButton";
 import "./styles.scss";
 
 class LogIn extends React.Component {
-    state = { error: "" };
-
-    handleFormSubmit = async ({ email, password }) => {
-        try {
-            const { data } = await api.post("/auth/login", { email, password });
-            console.log(data);
-        } catch ({ response }) {
-            this.setState({ error: response.data.error });
-        }
+    handleFormSubmit = ({ email, password }) => {
+        this.props.logIn(email, password);
     }
 
     render() {
@@ -33,7 +26,8 @@ class LogIn extends React.Component {
                 </div>
 
                 <div className="form-container">
-                    {this.state.error && <p className="error-messages">{this.state.error}</p>}
+                    {this.props.error && <p className="error-messages">{this.props.error}</p>}
+                    {this.props.user && `Welcome ${this.props.user.username}!`}
 
                     <Form onSubmit={this.handleFormSubmit}>
                         <label htmlFor="email">E-mail</label>
@@ -66,7 +60,12 @@ class LogIn extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { isSignedIn: state.auth.isSignedIn };
+    return {
+        isSignedIn: state.auth.isSignedIn,
+        error: state.auth.error,
+        user: state.auth.user,
+        token: state.auth.token
+    };
 };
 
-export default connect(mapStateToProps)(LogIn);
+export default connect(mapStateToProps, { logIn })(LogIn);
