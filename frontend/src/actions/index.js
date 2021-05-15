@@ -1,4 +1,4 @@
-import messages from "../apis/messages";
+import api from "../apis/api";
 import history from "../history";
 import authObject from "../GoogleAuth";
 
@@ -17,7 +17,7 @@ export const removeFromCart = id => {
 };
 
 export const sendContactMessage = formValues => async dispatch => {
-    const { data } = await messages.post(formValues);
+    const { data } = await api.post(formValues);
 
     dispatch({ type: "SEND_CONTACT_MESSAGE", payload: data });
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import api from "../../apis/messages";
+import api from "../../apis/api";
 import history from "../../history";
 import Form from "../Form";
 import "./styles.scss";

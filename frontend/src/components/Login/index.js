@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import history from "../../history";
-import api from "../../apis/messages";
+import api from "../../apis/api";
 import Form from "../Form";
 import GoogleButton from "../GoogleButton";
 import "./styles.scss";
