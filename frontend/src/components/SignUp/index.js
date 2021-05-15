@@ -10,12 +10,6 @@ import "./styles.scss";
 class SignUp extends React.Component {
     state = { error: "" };
 
-    componentDidMount() {
-        if(this.props.isSignedIn) {
-            history.push("/");
-        }
-    }
-
     handleFormSubmit = async ({ username, email, password }) => {
         try {
             const { data } = await api.post("/auth/signup", { username, email, password });
@@ -26,6 +20,11 @@ class SignUp extends React.Component {
     }
 
     render() {
+        if(this.props.isSignedIn) {
+            history.push("/");
+            return null;
+        }
+
         return (
             <div className="signup-container">
                 <div className="header">

@@ -10,12 +10,6 @@ import "./styles.scss";
 
 class LogIn extends React.Component {
     state = { error: "" };
-    
-    componentDidMount() {
-        if(this.props.isSignedIn) {
-            history.push("/");
-        }
-    }
 
     handleFormSubmit = async ({ email, password }) => {
         try {
@@ -27,6 +21,11 @@ class LogIn extends React.Component {
     }
 
     render() {
+        if(this.props.isSignedIn) {
+            history.push("/");
+            return null;
+        }
+
         return (
             <div className="login-container">
                 <div className="header">
