@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { logIn } from "../../actions";
-import history from "../../history";
 import Form from "../Form";
 import GoogleButton from "../GoogleButton";
 import "./styles.scss";
@@ -15,8 +14,7 @@ class LogIn extends React.Component {
 
     render() {
         if(this.props.isLoggedIn) {
-            history.push("/");
-            return null;
+            return <Redirect to="/" />;
         }
 
         return (
