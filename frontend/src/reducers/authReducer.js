@@ -1,8 +1,7 @@
 const INITIAL_STATE = {
     isSignedIn: null,
     error: null,
-    user: null,
-    token: null
+    user: null
 };
 
 const authReducer = (state=INITIAL_STATE, action) => {
@@ -16,8 +15,7 @@ const authReducer = (state=INITIAL_STATE, action) => {
                 ...state,
                 isSignedIn: true,
                 error: null,
-                user: action.payload.user,
-                token: action.payload.token
+                user: action.payload
             };
         case "SIGNUP_ERROR":
             return { ...state, error: action.payload };
@@ -26,8 +24,7 @@ const authReducer = (state=INITIAL_STATE, action) => {
                 ...state,
                 isSignedIn: true,
                 error: null,
-                user: action.payload.user,
-                token: action.payload.token
+                user: action.payload
             };
         default:
             return state;

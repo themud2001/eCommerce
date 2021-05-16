@@ -24,10 +24,7 @@ router.post("/login", async (req, res, next) => {
 
         res.status(200)
             .cookie("token", token, options)
-            .json({
-                user: userWithoutPassword,
-                token
-            });
+            .json({ user: userWithoutPassword });
     } catch (error) {
         next(error);
     }
@@ -65,10 +62,7 @@ router.post("/signup", async (req, res, next) => {
 
         res.status(200)
             .cookie("token", token, options)
-            .json({
-                user,
-                token
-            });
+            .json({ user });
     } catch (error) {
         next(error);
     }

@@ -62,8 +62,7 @@ const mapStateToProps = state => {
     return {
         isSignedIn: state.auth.isSignedIn,
         error: state.auth.error,
-        user: state.auth.user,
-        token: state.auth.token
+        user: state.auth.user
     };
 };
 

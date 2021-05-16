@@ -51,17 +51,17 @@ export const logInError = ({ error }) => {
     };
 };
 
-export const logInSuccess = data => {
+export const logInSuccess = user => {
     return {
         type: "LOGIN_SUCCESS",
-        payload: data
+        payload: user
     };
 };
 
 export const logIn = (email, password) => async dispatch => {
     try {
         const { data } = await api.post("/auth/login", { email, password });
-        dispatch(logInSuccess(data));
+        dispatch(logInSuccess(data.user));
     } catch ({ response }) {
         dispatch(logInError(response.data));
     }
@@ -74,17 +74,17 @@ export const signUpError = ({ error }) => {
     };
 };
 
-export const signUpSuccess = data => {
+export const signUpSuccess = user => {
     return {
         type: "SIGNUP_SUCCESS",
-        payload: data
+        payload: user
     };
 };
 
 export const signUp = (username, email, password) => async dispatch => {
     try {
         const { data } = await api.post("/auth/signup", { username, email, password });
-        dispatch(signUpSuccess(data));
+        dispatch(signUpSuccess(data.user));
     } catch ({ response }) {
         dispatch(signUpError(response.data));
     }
