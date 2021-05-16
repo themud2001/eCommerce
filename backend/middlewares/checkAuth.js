@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
             return res.status(500).json({ error: "An error occurred" })
         }
     } catch (error) {
-        return res.status(401).json({ error: "Invalid token" });
+        return res.status(401).json({ error: "Invalid user token" });
     }
 
     next();
