@@ -2,6 +2,7 @@ import React from "react";
 import { Router, Route } from "react-router-dom";
 
 import history from "../../history";
+import Auth from "../Auth";
 import About from "../About";
 import Contact from "../Contact";
 import GoogleAuth from "../GoogleAuth";
@@ -18,6 +19,7 @@ class App extends React.Component {
         return (
             <div>
                 <Router history={history}>
+                    <Auth />
                     <GoogleAuth />
                     <Header />
                     <Route path="/" exact component={Landing} />

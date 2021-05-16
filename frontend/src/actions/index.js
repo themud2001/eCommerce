@@ -22,17 +22,17 @@ export const sendContactMessage = formValues => async dispatch => {
     dispatch({ type: "SEND_CONTACT_MESSAGE", payload: data });
 };
 
-export const changeSignedIn = isSignedIn => {
+export const changeLoggedIn = isLoggedIn => {
     return {
-        type: "CHANGE_SIGNED_IN",
-        payload: isSignedIn
+        type: "CHANGE_LOGGED_IN",
+        payload: isLoggedIn
     };
 };
 
 export const googleSignIn = () => async dispatch => {
     authObject.then(async object => {
         await object.signIn();
-        dispatch(changeSignedIn(true));
+        dispatch(changeLoggedIn(true));
         history.push("/");
     });
 };
@@ -40,7 +40,7 @@ export const googleSignIn = () => async dispatch => {
 export const googleSignOut = () => async dispatch => {
     authObject.then(async object => {
         await object.signOut();
-        dispatch(changeSignedIn(false));
+        dispatch(changeLoggedIn(false));
     });    
 };
 
@@ -87,5 +87,14 @@ export const signUp = (username, email, password) => async dispatch => {
         dispatch(signUpSuccess(data.user));
     } catch ({ response }) {
         dispatch(signUpError(response.data));
+    }
+};
+
+export const authenticate = () => async dispatch => {
+    try {
+        const { data } = await api.get("/auth");
+        dispatch(logInSuccess(data.user));
+    } catch ({ response }) {
+        console.error(response.data.error);
     }
 };

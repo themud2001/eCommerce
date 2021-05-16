@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import authObject from "../../GoogleAuth";
-import { changeSignedIn } from "../../actions";
+import { changeLoggedIn } from "../../actions";
 
 class GoogleAuth extends React.Component {
     componentDidMount() {
@@ -12,11 +12,9 @@ class GoogleAuth extends React.Component {
         });
     }
 
-    handleAuthChange = isSignedIn => {
-        if(isSignedIn) {
-            this.props.changeSignedIn(true);
-        } else {
-            this.props.changeSignedIn(false);
+    handleAuthChange = isLoggedIn => {
+        if(isLoggedIn) {
+            this.props.changeLoggedIn(true);
         }
     }
 
@@ -25,4 +23,4 @@ class GoogleAuth extends React.Component {
     }
 }
 
-export default connect(null, { changeSignedIn })(GoogleAuth);
+export default connect(null, { changeLoggedIn })(GoogleAuth);

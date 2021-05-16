@@ -1,5 +1,11 @@
 const router = require("express").Router();
+
 const User = require("../models/User");
+const checkAuth = require("../middlewares/checkAuth");
+
+router.get("/", checkAuth, (req, res) => {
+    res.status(200).json({ user: req.user });
+});
 
 router.post("/login", async (req, res, next) => {
     const { email, password } = req.body;

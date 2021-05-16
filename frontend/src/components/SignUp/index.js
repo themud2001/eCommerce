@@ -13,7 +13,7 @@ class SignUp extends React.Component {
     }
 
     render() {
-        if(this.props.isSignedIn) {
+        if(this.props.isLoggedIn) {
             history.push("/");
             return null;
         }
@@ -68,7 +68,7 @@ class SignUp extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        isSignedIn: state.auth.isSignedIn,
+        isLoggedIn: state.auth.isLoggedIn,
         error: state.auth.error,
         user: state.auth.user
     };

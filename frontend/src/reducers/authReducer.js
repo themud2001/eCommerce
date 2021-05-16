@@ -1,19 +1,19 @@
 const INITIAL_STATE = {
-    isSignedIn: null,
+    isLoggedIn: null,
     error: null,
     user: null
 };
 
 const authReducer = (state=INITIAL_STATE, action) => {
     switch(action.type) {
-        case "CHANGE_SIGNED_IN":
-            return { ...state, isSignedIn: action.payload };
+        case "CHANGE_LOGGED_IN":
+            return { ...state, isLoggedIn: action.payload };
         case "LOGIN_ERROR":
             return { ...state, error: action.payload };
         case "LOGIN_SUCCESS":
             return {
                 ...state,
-                isSignedIn: true,
+                isLoggedIn: true,
                 error: null,
                 user: action.payload
             };
@@ -22,7 +22,7 @@ const authReducer = (state=INITIAL_STATE, action) => {
         case "SIGNUP_SUCCESS":
             return {
                 ...state,
-                isSignedIn: true,
+                isLoggedIn: true,
                 error: null,
                 user: action.payload
             };
