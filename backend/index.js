@@ -11,6 +11,7 @@ const databaseConnect = require("./config/db");
 const app = express();
 
 const authRoute = require("./routes/auth");
+const productsRoute = require("./routes/products");
 const errorHandler = require("./middlewares/errorHandler");
 
 app.use(express.json());
@@ -25,6 +26,7 @@ dotenv.config({ path: "./config/.env" });
 databaseConnect();
 
 app.use("/auth", authRoute);
+app.use("/products", productsRoute);
 
 app.use(errorHandler);
 

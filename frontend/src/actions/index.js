@@ -16,6 +16,29 @@ export const removeFromCart = id => {
     };
 };
 
+export const productsError = ({ error }) => {
+    return {
+        type: "PRODUCTS_ERROR",
+        payload: error
+    };
+};
+
+export const productsSuccess = products => {
+    return {
+        type: "PRODUCTS_SUCCESS",
+        payload: products
+    };
+};
+
+export const getProducts = () => async dispatch => {
+    try {
+        const { data } = await api.get("/products");
+        dispatch(productsSuccess(data.products));
+    } catch ({ response }) {
+        dispatch(productsError(response.data))
+    }
+};
+
 export const sendContactMessage = formValues => async dispatch => {
     const { data } = await api.post(formValues);
 
